@@ -2,10 +2,12 @@ import unittest
 
 class PokerGameTest(unittest.TestCase):
   def test_black_win(self):
-    assert game("Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S") =="Black wins"
-    assert game("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH") =="Black wins"
+    assert game("Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S") == "Black wins"
+    assert game("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH") == "Black wins"
   def test_white_win(self):
     assert game("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH") == "White wins" 
+  def test_tie(self):
+    assert game("Black: 2H 3D 5S 9C KD  White: 2D 3H 5C 9S KH") == "Tie"
 
 
 def parseInput(myinput):
@@ -143,8 +145,8 @@ def getHands(name, hand):
 
 
 def game(inputs):
-  print(inputs)
   inputs = inputs.split('\n')
+  print(inputs)
   for i in inputs:
     hands = parseInput(i)
     results = {}
@@ -156,8 +158,8 @@ def game(inputs):
     print("%s wins" % rankings[0][0])
     return ("%s wins" % rankings[0][0])
   else:
-    print("tie")
-    return ("tie")
+    print("Tie")
+    return ("Tie")
 
 
 if __name__ =='__main__':
